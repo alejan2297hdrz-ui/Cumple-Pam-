@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz cumpleaños Pam 💗</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+    color:white;
+    background:
+        radial-gradient(circle at 20% 20%, #ff4fa3 0%, transparent 25%),
+        radial-gradient(circle at 80% 30%, #7b2cff 0%, transparent 25%),
+        linear-gradient(135deg,#080008,#160012,#09000f);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:92%;
+    max-width:430px;
+    text-align:center;
+    padding:35px 22px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:30px;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 45px rgba(255,50,170,.35);
+    animation:appear 1.5s ease;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:30px;
+    background:linear-gradient(90deg,#ff3d9d,#9d4dff);
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:42px;
+    margin:5px 0;
+    background:linear-gradient(90deg,#fff,#ff8dca,#c99cff,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:shine 3s infinite;
+}
+
+.korean{
+    font-size:18px;
+    opacity:.85;
+    margin:10px 0 22px;
+}
+
+.message{
+    font-size:17px;
+    line-height:1.6;
+    color:#f8ddec;
+}
+
+button{
+    margin-top:25px;
+    padding:15px 25px;
+    border:0;
+    border-radius:30px;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    background:linear-gradient(90deg,#ff3b9d,#8e42ff);
+    box-shadow:0 0 25px rgba(255,60,170,.5);
+    transition:.3s;
+}
+
+button:active{
+    transform:scale(.94);
+}
+
+#surprise{
+    display:none;
+    margin-top:25px;
+    animation:pop .8s ease;
+}
+
+#surprise h2{
+    color:#ff8dca;
+}
+
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:22px;
+    animation:float 6s linear infinite;
+    pointer-events:none;
+}
+
+.sparkle{
+    position:fixed;
+    color:white;
+    animation:twinkle 2s infinite;
+    pointer-events:none;
+}
+
+@keyframes appear{
+    from{opacity:0;transform:scale(.8) translateY(30px);}
+    to{opacity:1;transform:scale(1) translateY(0);}
+}
+
+@keyframes pop{
+    from{opacity:0;transform:scale(.5);}
+    to{opacity:1;transform:scale(1);}
+}
+
+@keyframes shine{
+    0%,100%{filter:brightness(1);}
+    50%{filter:brightness(1.5);}
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    15%{opacity:1;}
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:.2;transform:scale(.7);}
+    50%{opacity:1;transform:scale(1.3);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="badge">✨ SPECIAL SURPRISE ✨</div>
+
+    <h1>Feliz cumpleaños,<br>Pam 💗</h1>
+
+    <div class="korean">오늘은 Pam의 날이에요 🌸</div>
+
+    <p class="message">
+        Hoy es un día especial porque toca celebrar
+        a una persona muy especial. 🖤💗
+        <br><br>
+        Espero que tengas un día increíble,
+        lleno de momentos bonitos, risas,
+        música y muchas sorpresas. ✨
+    </p>
+
+    <button onclick="sorpresa()">
+        🎀 Tengo una sorpresa para ti
+    </button>
+
+    <div id="surprise">
+        <h2>🖤💗 ¡SORPRESA! 💗🖤</h2>
+        <p>
+            Que este nuevo año de vida venga
+            con muchísimas cosas bonitas,
+            aventuras y momentos que recuerdes
+            con una sonrisa. 🌸✨
+        </p>
+        <p>
+            <b>¡Feliz cumpleaños, Pam! 🎂💗</b>
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+function sorpresa(){
+    document.getElementById("surprise").style.display="block";
+
+    for(let i=0;i<25;i++){
+        crearCorazon();
+    }
+}
+
+function crearCorazon(){
+
+    const heart=document.createElement("div");
+
+    const emojis=["💗","🖤","💜","✨","🌸","🎀"];
+
+    heart.className="heart";
+    heart.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(4+Math.random()*4)+"s";
+    heart.style.fontSize=(15+Math.random()*20)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+function crearSparkle(){
+
+    const s=document.createElement("div");
+
+    s.className="sparkle";
+    s.innerHTML="✦";
+
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    s.style.fontSize=(8+Math.random()*15)+"px";
+
+    document.body.appendChild(s);
+
+    setTimeout(()=>{
+        s.remove();
+    },2000);
+}
+
+setInterval(crearSparkle,500);
+
+setInterval(()=>{
+    if(Math.random()>.4) crearCorazon();
+},1200);
+
+</script>
+
+</body>
+</html>
